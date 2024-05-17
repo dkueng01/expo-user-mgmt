@@ -3,6 +3,7 @@ import { supabase } from '../lib/superbase';
 import { StyleSheet, View, Alert } from 'react-native';
 import { Button, Input } from '@rneui/themed';
 import { Session } from '@supabase/supabase-js';
+import Avatar from './Avatar';
 
 export default function Account({ session }: { session: Session }) {
     const [loading, setLoading] = useState(false);
@@ -79,6 +80,16 @@ export default function Account({ session }: { session: Session }) {
     return (
         <View style={styles.container}>
             <View style={[styles.verticallySpaced, styles.mt20]}>
+                <Avatar
+                    size={200}
+                    url={avatarUrl}
+                    onUpload={(url: string) => {
+                    setAvatarUrl(url)
+                    updateProfile({ username, website, avatar_url: url })
+                    }}
+                />
+            </View>
+            <View style={[styles.verticallySpaced, styles.mt20]}>
                 <Input label="Email" value={session?.user?.email} disabled />
             </View>
             <View style={styles.verticallySpaced}>
@@ -105,15 +116,15 @@ export default function Account({ session }: { session: Session }) {
 
 const styles = StyleSheet.create({
     container: {
-      marginTop: 40,
-      padding: 12,
+        marginTop: 40,
+        padding: 12,
     },
     verticallySpaced: {
-      paddingTop: 4,
-      paddingBottom: 4,
-      alignSelf: 'stretch',
+        paddingTop: 4,
+        paddingBottom: 4,
+        alignSelf: 'stretch',
     },
     mt20: {
-      marginTop: 20,
+        marginTop: 20,
     },
   })
