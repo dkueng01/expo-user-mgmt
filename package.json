@@ -17,7 +17,10 @@
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-url-polyfill": "^2.0.0",
-    "expo-image-picker": "~15.0.5"
+    "expo-image-picker": "~15.0.5",
+    "expo-notifications": "~0.28.3",
+    "expo-device": "~6.0.2",
+    "expo-constants": "~16.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
