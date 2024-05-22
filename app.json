@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo-user-management",
-    "slug": "expo-user-management",
+    "name": "expo-supa-push",
+    "slug": "expo-supa-push",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,6 +23,12 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "scheme": "com.supabase"
+    "scheme": "com.supabase",
+    "extra": {
+      "eas": {
+        "projectId": "e885d1a3-55eb-4c17-8669-b0b45e41486a"
+      }
+    },
+    "owner": "dkueng01"
   }
 }

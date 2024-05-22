@@ -4,6 +4,7 @@ import { StyleSheet, View, Alert } from 'react-native';
 import { Button, Input } from '@rneui/themed';
 import { Session } from '@supabase/supabase-js';
 import Avatar from './Avatar';
+import Push from './Push';
 
 export default function Account({ session }: { session: Session }) {
     const [loading, setLoading] = useState(false);
@@ -109,6 +110,10 @@ export default function Account({ session }: { session: Session }) {
         
             <View style={styles.verticallySpaced}>
                 <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
+            </View>
+
+            <View style={styles.verticallySpaced}>
+                <Push />
             </View>
         </View>
     )
