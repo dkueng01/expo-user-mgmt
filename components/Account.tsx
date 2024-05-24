@@ -113,7 +113,7 @@ export default function Account({ session }: { session: Session }) {
             </View>
 
             <View style={styles.verticallySpaced}>
-                <Push />
+                <Push session={session}/>
             </View>
         </View>
     )
