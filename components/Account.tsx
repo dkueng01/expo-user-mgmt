@@ -9,6 +9,8 @@ import Push from './Push';
 export default function Account({ session }: { session: Session }) {
     const [loading, setLoading] = useState(false);
     const [username, setUsername] = useState('');
+    const [fullName, setFullName] = useState('');
+    const [birthday, setBirthday] = useState('');
     const [website, setWebsite] = useState('');
     const [avatarUrl, setAvatarUrl] = useState('');
 
@@ -27,7 +29,7 @@ export default function Account({ session }: { session: Session }) {
 
             const {data, error, status} = await supabase
                 .from('profiles')
-                .select(`username, website, avatar_url`)
+                .select(`username, full_name, birthday, website, avatar_url`)
                 .eq('id', session?.user.id)
                 .single();
 
@@ -37,6 +39,8 @@ export default function Account({ session }: { session: Session }) {
 
             if (data) {
                 setUsername(data.username)
+                setFullName(data.full_name)
+                setBirthday(data.birthday)
                 setWebsite(data.website)
                 setAvatarUrl(data.avatar_url)
             }
@@ -61,6 +65,8 @@ export default function Account({ session }: { session: Session }) {
                 username,
                 website,
                 avatar_url,
+                fullName,
+                birthday,
                 updated_at: new Date(),
             };
 
@@ -92,6 +98,9 @@ export default function Account({ session }: { session: Session }) {
             </View>
             <View style={[styles.verticallySpaced, styles.mt20]}>
                 <Input label="Email" value={session?.user?.email} disabled />
+            </View>
+            <View style={[styles.verticallySpaced, styles.mt20]}>
+                <Input label="Birthday" value={birthday || ''} disabled />
             </View>
             <View style={styles.verticallySpaced}>
                 <Input label="Username" value={username || ''} onChangeText={(text) => setUsername(text)} />
